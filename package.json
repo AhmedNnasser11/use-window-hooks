@@ -1,0 +1,32 @@
+{
+  "name": "use-window-hooks",
+  "version": "1.0.0",
+  "description": "use window hooks it is hooks for reactjs and nextjs apps",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AhmedNnasser11/use-window-hooks.git"
+  },
+  "keywords": [
+    "hooks",
+    "window",
+    "reactjs",
+    "nextjs"
+  ],
+  "author": "ahmed nasser",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AhmedNnasser11/use-window-hooks/issues"
+  },
+  "homepage": "https://github.com/AhmedNnasser11/use-window-hooks#readme",
+  "dependencies": {
+    "react": "^18.3.1"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.3",
+    "typescript": "^5.5.4"
+  }
+}
