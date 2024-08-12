@@ -11,10 +11,25 @@
     "url": "git+https://github.com/AhmedNnasser11/use-window-hooks.git"
   },
   "keywords": [
+    "react",
     "hooks",
+    "browser",
     "window",
+    "scroll",
+    "focus",
+    "media-query",
+    "nextjs",
     "reactjs",
-    "nextjs"
+    "use-window-hooks",
+    "useWindowHooks",
+    "useWindowFocus",
+    "useWindowScroll",
+    "useWindowUrl",
+    "useWindowMediaQuery",
+    "useIsMounted",
+    "use-url-history",
+    "use-Window-url",
+    "use-mouse-move"
   ],
   "author": "ahmed nasser",
   "license": "ISC",
