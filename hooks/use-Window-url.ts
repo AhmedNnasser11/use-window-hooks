@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useIsMounted } from './use-is-mounted';
+import  useIsMounted  from './use-is-mounted';
 
 const useWindowUrl = () => {
   const isMounted = useIsMounted();
