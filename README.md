@@ -14,13 +14,13 @@ This package provides a powerful collection of custom React hooks specifically d
 Install the package using npm or yarn:
 
 ```bash
-npm install your-package-name
+npm install use-window-hooks
 ```
 
 or
 
 ```bash
-yarn add your-package-name
+yarn add use-window-hooks
 ```
 
 ## Available Hooks
@@ -32,7 +32,7 @@ yarn add your-package-name
 **Example Usage:**
 
 ```typescript
-import { useIsMounted } from 'your-package-name';
+import { useIsMounted } from 'use-window-hooks';
 
 const MyComponent = () => {
   const isMounted = useIsMounted();
@@ -54,7 +54,7 @@ const MyComponent = () => {
 **Example Usage:**
 
 ```typescript
-import { useIsFirstRender } from 'your-package-name';
+import { useIsFirstRender } from 'use-window-hooks';
 
 const MyComponent = () => {
   const isFirstRender = useIsFirstRender();
@@ -76,7 +76,7 @@ const MyComponent = () => {
 **Example Usage:**
 
 ```typescript
-import { useMousePosition } from 'your-package-name';
+import { useMousePosition } from 'use-window-hooks';
 
 const MyComponent = () => {
   const { x, y } = useMousePosition();
@@ -102,7 +102,7 @@ const MyComponent = () => {
 **Example Usage:**
 
 ```typescript
-import { useUrlHistory } from 'your-package-name';
+import { useUrlHistory } from 'use-window-hooks';
 
 const MyComponent = () => {
   const { history, previousPath, clearUrlHistory, getUrlHistory } = useUrlHistory();
@@ -125,7 +125,7 @@ const MyComponent = () => {
 **Example Usage:**
 
 ```typescript
-import { useWindowFocus } from 'your-package-name';
+import { useWindowFocus } from 'use-window-hooks';
 
 const MyComponent = () => {
   const isWindowFocused = useWindowFocus();
@@ -146,7 +146,7 @@ const MyComponent = () => {
 **Example Usage:**
 
 ```typescript
-import { useMediaQuery } from 'your-package-name';
+import { useMediaQuery } from 'use-window-hooks';
 
 const MyComponent = () => {
   const { results, matchQuery } = useMediaQuery({
@@ -175,7 +175,7 @@ const MyComponent = () => {
 **Example Usage:**
 
 ```typescript
-import { useWindowScroll } from 'your-package-name';
+import { useWindowScroll } from 'use-window-hooks';
 
 const MyComponent = () => {
   const { x, y } = useWindowScroll();
@@ -195,7 +195,7 @@ const MyComponent = () => {
 **Example Usage:**
 
 ```typescript
-import { useWindowUrl } from 'your-package-name';
+import { useWindowUrl } from 'use-window-hooks';
 
 const MyComponent = () => {
   const url = useWindowUrl();
