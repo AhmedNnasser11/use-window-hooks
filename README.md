@@ -14,82 +14,18 @@ This package provides a powerful collection of custom React hooks specifically d
 Install the package using npm or yarn:
 
 ```bash
-npm install use-window-hooks
+npm install your-package-name
 ```
 
 or
 
 ```bash
-yarn add use-window-hooks
+yarn add your-package-name
 ```
 
 ## Available Hooks
 
-### 1. `useIsMounted`
-
-**Purpose**: Track whether a component is mounted to avoid performing state updates on unmounted components.
-
-**Example Usage:**
-
-```typescript
-import { useIsMounted } from 'use-window-hooks';
-
-const MyComponent = () => {
-  const isMounted = useIsMounted();
-
-  useEffect(() => {
-    if (isMounted) {
-      // Perform actions only if the component is mounted
-    }
-  }, [isMounted]);
-
-  return <div>Component Content</div>;
-};
-```
-
-### 2. `useIsFirstRender`
-
-**Purpose**: Detect if the current render is the first render of the component.
-
-**Example Usage:**
-
-```typescript
-import { useIsFirstRender } from 'use-window-hooks';
-
-const MyComponent = () => {
-  const isFirstRender = useIsFirstRender();
-
-  useEffect(() => {
-    if (isFirstRender) {
-      // Execute code only on the first render
-    }
-  }, []);
-
-  return <div>Component Content</div>;
-};
-```
-
-### 3. `useMousePosition`
-
-**Purpose**: Track the mouse's position on the screen in real-time.
-
-**Example Usage:**
-
-```typescript
-import { useMousePosition } from 'use-window-hooks';
-
-const MyComponent = () => {
-  const { x, y } = useMousePosition();
-
-  return (
-    <div>
-      Mouse Position: ({x}, {y})
-    </div>
-  );
-};
-```
-
-### 4. `useUrlHistory`
+### 1. `useUrlHistory`
 
 **Purpose**: Manage and track the history of URLs visited within the application using sessionStorage.
 
@@ -102,7 +38,7 @@ const MyComponent = () => {
 **Example Usage:**
 
 ```typescript
-import { useUrlHistory } from 'use-window-hooks';
+import { useUrlHistory } from 'your-package-name';
 
 const MyComponent = () => {
   const { history, previousPath, clearUrlHistory, getUrlHistory } = useUrlHistory();
@@ -118,23 +54,7 @@ const MyComponent = () => {
 };
 ```
 
-### 5. `useWindowFocus`
-
-**Purpose**: Detect whether the browser window is currently focused.
-
-**Example Usage:**
-
-```typescript
-import { useWindowFocus } from 'use-window-hooks';
-
-const MyComponent = () => {
-  const isWindowFocused = useWindowFocus();
-
-  return <div>Window is {isWindowFocused ? 'focused' : 'not focused'}</div>;
-};
-```
-
-### 6. `useMediaQuery`
+### 2. `useMediaQuery`
 
 **Purpose**: Track and respond to media queries, such as screen sizes, in real-time.
 
@@ -146,7 +66,7 @@ const MyComponent = () => {
 **Example Usage:**
 
 ```typescript
-import { useMediaQuery } from 'use-window-hooks';
+import { useMediaQuery } from 'your-package-name';
 
 const MyComponent = () => {
   const { results, matchQuery } = useMediaQuery({
@@ -168,6 +88,86 @@ const MyComponent = () => {
 };
 ```
 
+### 3. `useMousePosition`
+
+**Purpose**: Track the mouse's position on the screen in real-time.
+
+**Example Usage:**
+
+```typescript
+import { useMousePosition } from 'your-package-name';
+
+const MyComponent = () => {
+  const { x, y } = useMousePosition();
+
+  return (
+    <div>
+      Mouse Position: ({x}, {y})
+    </div>
+  );
+};
+```
+
+### 4. `useWindowFocus`
+
+**Purpose**: Detect whether the browser window is currently focused.
+
+**Example Usage:**
+
+```typescript
+import { useWindowFocus } from 'your-package-name';
+
+const MyComponent = () => {
+  const isWindowFocused = useWindowFocus();
+
+  return <div>Window is {isWindowFocused ? 'focused' : 'not focused'}</div>;
+};
+```
+
+### 5. `useIsMounted`
+
+**Purpose**: Track whether a component is mounted to avoid performing state updates on unmounted components.
+
+**Example Usage:**
+
+```typescript
+import { useIsMounted } from 'your-package-name';
+
+const MyComponent = () => {
+  const isMounted = useIsMounted();
+
+  useEffect(() => {
+    if (isMounted) {
+      // Perform actions only if the component is mounted
+    }
+  }, [isMounted]);
+
+  return <div>Component Content</div>;
+};
+```
+
+### 6. `useIsFirstRender`
+
+**Purpose**: Detect if the current render is the first render of the component.
+
+**Example Usage:**
+
+```typescript
+import { useIsFirstRender } from 'your-package-name';
+
+const MyComponent = () => {
+  const isFirstRender = useIsFirstRender();
+
+  useEffect(() => {
+    if (isFirstRender) {
+      // Execute code only on the first render
+    }
+  }, []);
+
+  return <div>Component Content</div>;
+};
+```
+
 ### 7. `useWindowScroll`
 
 **Purpose**: Track the scroll position of the browser window.
@@ -175,7 +175,7 @@ const MyComponent = () => {
 **Example Usage:**
 
 ```typescript
-import { useWindowScroll } from 'use-window-hooks';
+import { useWindowScroll } from 'your-package-name';
 
 const MyComponent = () => {
   const { x, y } = useWindowScroll();
@@ -195,7 +195,7 @@ const MyComponent = () => {
 **Example Usage:**
 
 ```typescript
-import { useWindowUrl } from 'use-window-hooks';
+import { useWindowUrl } from 'your-package-name';
 
 const MyComponent = () => {
   const url = useWindowUrl();

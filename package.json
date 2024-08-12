@@ -1,9 +1,10 @@
 {
   "name": "use-window-hooks",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "use window hooks it is hooks for reactjs and nextjs apps",
   "main": "index.js",
   "scripts": {
+    "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
