@@ -80,7 +80,7 @@ const App = () => {
 
 export default App;
 ```
-
+then import `useHistory` in any component to get the url history
 
 ```typescript
 import { useUrlHistory } from 'use-window-hooks';
