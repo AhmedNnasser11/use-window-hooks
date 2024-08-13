@@ -7,3 +7,4 @@ export { default as useWindowScroll } from './hooks/use-window-scroll';
 export { default as useMousePosition } from './hooks/use-mouse-move';
 export { default as useIsFirstRender } from './hooks/use-isFirst-render';
 export { default as useMediaQuery } from './hooks/use-window-query';
+export { default as useOnScreen } from './hooks/use-on-screen';

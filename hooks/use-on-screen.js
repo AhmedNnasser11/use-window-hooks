@@ -1,0 +1,39 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const react_1 = require("react");
+function useOnScreen(refs, options = {}) {
+    const [visibilityStates, setVisibilityStates] = (0, react_1.useState)(new Map());
+    (0, react_1.useEffect)(() => {
+        const observer = new IntersectionObserver((entries) => {
+            const newStates = new Map(visibilityStates);
+            entries.forEach((entry) => {
+                var _a;
+                const id = entry.target.getAttribute('data-id');
+                if (id) {
+                    newStates.set(id, {
+                        isIntersecting: entry.isIntersecting,
+                        hasBeenVisible: entry.isIntersecting || ((_a = newStates.get(id)) === null || _a === void 0 ? void 0 : _a.hasBeenVisible) || false,
+                    });
+                }
+            });
+            setVisibilityStates(newStates);
+        }, {
+            rootMargin: options.rootMargin || '0px',
+        });
+        refs.current.forEach((ref) => {
+            if (ref) {
+                observer.observe(ref);
+            }
+        });
+        return () => {
+            // eslint-disable-next-line react-hooks/exhaustive-deps
+            refs.current.forEach((ref) => {
+                if (ref) {
+                    observer.unobserve(ref);
+                }
+            });
+        };
+    }, [refs, options.rootMargin, visibilityStates]);
+    return visibilityStates;
+}
+exports.default = useOnScreen;

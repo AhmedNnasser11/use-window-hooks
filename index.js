@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.useMediaQuery = exports.useIsFirstRender = exports.useMousePosition = exports.useWindowScroll = exports.useWindowFocus = exports.useUrlHistory = exports.useIsMounted = exports.useWindowUrl = void 0;
+exports.useOnScreen = exports.useMediaQuery = exports.useIsFirstRender = exports.useMousePosition = exports.useWindowScroll = exports.useWindowFocus = exports.useUrlHistory = exports.useIsMounted = exports.useWindowUrl = void 0;
 var use_Window_url_1 = require("./hooks/use-Window-url");
 Object.defineProperty(exports, "useWindowUrl", { enumerable: true, get: function () { return __importDefault(use_Window_url_1).default; } });
 var use_is_mounted_1 = require("./hooks/use-is-mounted");
@@ -20,3 +20,5 @@ var use_isFirst_render_1 = require("./hooks/use-isFirst-render");
 Object.defineProperty(exports, "useIsFirstRender", { enumerable: true, get: function () { return __importDefault(use_isFirst_render_1).default; } });
 var use_window_query_1 = require("./hooks/use-window-query");
 Object.defineProperty(exports, "useMediaQuery", { enumerable: true, get: function () { return __importDefault(use_window_query_1).default; } });
+var use_on_screen_1 = require("./hooks/use-on-screen");
+Object.defineProperty(exports, "useOnScreen", { enumerable: true, get: function () { return __importDefault(use_on_screen_1).default; } });

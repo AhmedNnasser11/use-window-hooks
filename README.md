@@ -133,7 +133,108 @@ const MyComponent = () => {
 };
 ```
 
-### 3. `useMousePosition`
+### 3. `useOnScreen`
+
+**Purpose**: Track the visibility of an element or a list of elements on the screen, including if they were ever visible.
+
+**Parameters and Return Values:**
+- **`ref`**: A React ref object for a single element or a list of elements.
+- **`options`**: An optional object for specifying the `rootMargin`.
+- **`visibilityStates`**: An array or map of objects indicating whether each element is currently visible and if it has ever been visible.
+
+**Example Usage (Single Element):**
+
+```typescript
+import React, { useRef } from 'react';
+import { useOnScreen } from 'use-window-hooks';
+
+const MySingleComponent: React.FC = () => {
+  const ref = useRef<HTMLDivElement>(null);
+  const visibilityStates = useOnScreen(ref, { rootMargin: '-50px' });
+
+  const { isIntersecting, hasBeenVisible } = visibilityStates[0] || { isIntersecting: false, hasBeenVisible: false };
+
+  return (
+    <div>
+      <div style={{ height: '100vh' }}>Scroll down to see the element</div>
+      <div
+        ref={ref}
+        style={{
+          height: '100px',
+          backgroundColor: isIntersecting ? 'green' : 'red',
+        }}
+      >
+        {isIntersecting ? 'In View' : 'Out of View'}
+      </div>
+      <div style={{ height: '100vh' }}>Scroll more to trigger out of view</div>
+      <div>
+        {hasBeenVisible
+          ? 'This element has been visible at least once.'
+          : 'This element has not been visible yet.'}
+      </div>
+    </div>
+  );
+};
+
+export default MySingleComponent;
+```
+
+**Example Usage (List of Elements with Unique IDs):**
+
+```typescript
+import React, { useRef } from 'react';
+import { useOnScreen } from 'use-window-hooks';
+
+const MyListComponent: React.FC = () => {
+  const refMap = useRef<Map<string, HTMLDivElement | null>>(new Map());
+
+  const visibilityStates = useOnScreen(refMap, { rootMargin: '-50px' });
+
+  const items = [
+    { id: 'item-1', content: 'Item 1' },
+    { id: 'item-2', content: 'Item 2' },
+    { id: 'item-3', content: 'Item 3' },
+    { id: 'item-4', content: 'Item 4' },
+    { id: 'item-5', content: 'Item 5' },
+  ];
+
+  return (
+    <div>
+      <div style={{ height: '100vh' }}>Scroll down to see the elements</div>
+      {items.map((item) => (
+        <div
+          key={item.id}
+          data-id={item.id}
+          ref={(el) => {
+            refMap.current.set(item.id, el);
+          }}
+          style={{
+            height: '100px',
+            backgroundColor: visibilityStates.get(item.id)?.isIntersecting ? 'green' : 'red',
+            margin: '10px 0',
+          }}
+        >
+          {visibilityStates.get(item.id)?.isIntersecting
+            ? `${item.content} In View`
+            : `${item.content} Out of View`}
+        </div>
+      ))}
+      <div style={{ height: '100vh' }}>Scroll more to trigger out of view</div>
+      {items.map((item) => (
+        <div key={item.id}>
+          {visibilityStates.get(item.id)?.hasBeenVisible
+            ? `${item.content} has been visible at least once.`
+            : `${item.content} has not been visible yet.`}
+        </div>
+      ))}
+    </div>
+  );
+};
+
+export default MyListComponent;
+```
+
+### 4. `useMousePosition`
 
 **Purpose**: Track the mouse's position on the screen in real-time.
 
@@ -153,7 +254,7 @@ const MyComponent = () => {
 };
 ```
 
-### 4. `useWindowFocus`
+### 5. `useWindowFocus`
 
 **Purpose**: Detect whether the browser window is currently focused.
 
@@ -169,7 +270,7 @@ const MyComponent = () => {
 };
 ```
 
-### 5. `useIsMounted`
+### 6. `useIsMounted`
 
 **Purpose**: Track whether a component is mounted to avoid performing state updates on unmounted components.
 
@@ -191,7 +292,7 @@ const MyComponent = () => {
 };
 ```
 
-### 6. `useIsFirstRender`
+### 7. `useIsFirstRender`
 
 **Purpose**: Detect if the current render is the first render of the component.
 
@@ -213,7 +314,7 @@ const MyComponent = () => {
 };
 ```
 
-### 7. `useWindowScroll`
+### 8. `useWindowScroll`
 
 **Purpose**: Track the scroll position of the browser window.
 
@@ -233,7 +334,7 @@ const MyComponent = () => {
 };
 ```
 
-### 8. `useWindowUrl`
+### 9. `useWindowUrl`
 
 **Purpose**: Retrieve the current browser window URL.
 
