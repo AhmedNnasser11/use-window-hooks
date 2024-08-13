@@ -151,24 +151,27 @@ import { useOnScreen } from 'use-window-hooks';
 const MySingleComponent: React.FC = () => {
   const ref = useRef<HTMLDivElement>(null);
   const visibilityStates = useOnScreen(ref, { rootMargin: '-50px' });
-
-  const { isIntersecting, hasBeenVisible } = visibilityStates[0] || { isIntersecting: false, hasBeenVisible: false };
+  const visibilityState = visibilityStates.get('default')!;
 
   return (
     <div>
+        {visibilityState?.hasBeenVisible
+          ? 'This element has been visible at least once.'
+          : 'This element has not been visible yet.'}
       <div style={{ height: '100vh' }}>Scroll down to see the element</div>
+    
       <div
         ref={ref}
         style={{
           height: '100px',
-          backgroundColor: isIntersecting ? 'green' : 'red',
+          backgroundColor: visibilityState?.isIntersecting ? 'green' : 'red',
         }}
       >
-        {isIntersecting ? 'In View' : 'Out of View'}
+        {visibilityState?.isIntersecting ? 'In View' : 'Out of View'}
       </div>
       <div style={{ height: '100vh' }}>Scroll more to trigger out of view</div>
       <div>
-        {hasBeenVisible
+        {visibilityState?.hasBeenVisible
           ? 'This element has been visible at least once.'
           : 'This element has not been visible yet.'}
       </div>
@@ -200,7 +203,15 @@ const MyListComponent: React.FC = () => {
 
   return (
     <div>
+      {items.map((item) => (
+        <div key={item.id}>
+          {visibilityStates.get(item.id)?.hasBeenVisible
+            ? `${item.content} has been visible at least once.`
+            : `${item.content} has not been visible yet.`}
+        </div>
+      ))}
       <div style={{ height: '100vh' }}>Scroll down to see the elements</div>
+      
       {items.map((item) => (
         <div
           key={item.id}
