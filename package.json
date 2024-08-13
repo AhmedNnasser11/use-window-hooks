@@ -1,6 +1,6 @@
 {
   "name": "use-window-hooks",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "use window hooks it is hooks for reactjs and nextjs apps",
   "main": "index.js",
   "scripts": {

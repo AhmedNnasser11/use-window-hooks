@@ -23,6 +23,47 @@ or
 yarn add use-window-hooks
 ```
 
+## Usage
+
+To get started with this package, simply import the hooks you need into your React components. Additionally, to track and store the URL history, you should call `useUrlHistory` in your layout component or app wrapper. This will initialize and store the history throughout the app lifecycle.
+
+### Example Setup:
+
+```typescript
+import { useUrlHistory } from 'use-window-hooks';
+
+const AppLayout = ({ children }) => {
+  // Initialize URL history tracking
+  const { history, previousPath } = useUrlHistory();
+
+  return (
+    <div>
+      <header>Your Header</header>
+      <main>{children}</main>
+      <footer>Your Footer</footer>
+    </div>
+  );
+};
+
+export default AppLayout;
+```
+
+### Example App Wrapper:
+
+```typescript
+import AppLayout from './AppLayout';
+
+const App = () => {
+  return (
+    <AppLayout>
+      {/* Your app routes and components */}
+    </AppLayout>
+  );
+};
+
+export default App;
+```
+
 ## Available Hooks
 
 ### 1. `useUrlHistory`
