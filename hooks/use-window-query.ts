@@ -1,4 +1,4 @@
-import { useSyncExternalStore, useRef } from 'react';
+import { useSyncExternalStore, useRef, useCallback } from 'react';
 
 type MediaQueryList = {
   [key: string]: string;
@@ -16,7 +16,11 @@ interface UseMediaQueryResult {
 function useMediaQuery(queries: MediaQueryList): UseMediaQueryResult {
   const lastResultsRef = useRef<MediaQueryMatchResult>({});
 
-  const getSnapshot = () => {
+  const getSnapshot = useCallback(() => {
+    if (typeof window === 'undefined') {
+      return lastResultsRef.current;
+    }
+
     const matchResults: MediaQueryMatchResult = {};
     let hasChanged = false;
 
@@ -35,9 +39,13 @@ function useMediaQuery(queries: MediaQueryList): UseMediaQueryResult {
     }
 
     return lastResultsRef.current;
-  };
+  }, [queries]);
 
-  const subscribe = (callback: () => void) => {
+  const subscribe = useCallback((callback: () => void) => {
+    if (typeof window === 'undefined') {
+      return () => {};
+    }
+
     const mediaQueryLists = Object.keys(queries).map((key) =>
       window.matchMedia(queries[key])
     );
@@ -51,11 +59,15 @@ function useMediaQuery(queries: MediaQueryList): UseMediaQueryResult {
         mediaQueryList.removeEventListener('change', callback)
       );
     };
-  };
+  }, [queries]);
 
   const matchResult = useSyncExternalStore(subscribe, getSnapshot, getSnapshot);
 
-  const matchQuery = (newQueries: MediaQueryList): MediaQueryMatchResult => {
+  const matchQuery = useCallback((newQueries: MediaQueryList): MediaQueryMatchResult => {
+    if (typeof window === 'undefined') {
+      return {};
+    }
+
     const newMatchResults: MediaQueryMatchResult = {};
     for (const key in newQueries) {
       if (newQueries.hasOwnProperty(key)) {
@@ -63,7 +75,7 @@ function useMediaQuery(queries: MediaQueryList): UseMediaQueryResult {
       }
     }
     return newMatchResults;
-  };
+  }, []);
 
   return { results: matchResult, matchQuery };
 }

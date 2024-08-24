@@ -8,6 +8,7 @@ interface UseUrlHistory {
 }
 
 const useUrlHistory = (): UseUrlHistory => {
+  
   const [history, setHistory] = useState<string[]>(() => {
     if (typeof window !== 'undefined' && typeof sessionStorage !== 'undefined') {
       return JSON.parse(sessionStorage.getItem('urlHistory') || '[]');
